@@ -1,0 +1,924 @@
+/* Base styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  overflow: hidden;
+  height: 100vh;
+}
+
+
+/* Desktop background */
+
+.background-image {
+  background-image: url('./assets/windows10-wallpaper.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 95vh;
+}
+.taskbar {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.start-button img {
+    max-width: 30px;
+}
+
+.start-recent {
+    display: flex;
+}
+
+.start-right {
+    display: flex;
+}
+.taskbar-item.active {
+    background: #0078d7;
+    border: 2px solid #000;
+}
+/* Desktop icons styling */
+.desktop-icon {
+  transition: all 0.2s ease;
+  border-radius: 4px;
+  width: 80px;
+  user-select: none;
+}
+
+.desktop-icon:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.desktop-icon:active {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.desktop-icon-image {
+  font-size: 2.5rem;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+}
+
+
+/* Window styling */
+.window {
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: windowOpen 0.2s ease-out;
+  position: absolute;
+  transition: all 0.1s ease-in-out;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+.window-inactive {
+  opacity: 0.85;
+}
+
+@keyframes windowOpen {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.window-title-bar {
+  border-radius: 8px 8px 0 0;
+  background: linear-gradient(to right, #f0f0f0, #e6e6e6);
+  border-bottom: 1px solid #d1d1d1;
+  user-select: none;
+  cursor: move;
+  height: 32px;
+}
+
+.window-title {
+  font-weight: 500;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.window-controls button {
+  background: transparent;
+  border: none;
+  width: 46px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.1s ease;
+}
+
+.window-controls button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.window-controls button.close-btn:hover {
+  background-color: #e81123;
+  color: white;
+}
+
+.window-content {
+  background-color: white;
+  height: 100%;
+  border-radius: 0 0 8px 8px;
+  overflow: auto;
+}
+
+/* Custom scrollbar */
+.window-content::-webkit-scrollbar {
+  width: 12px;
+}
+
+.window-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.window-content::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 6px;
+  border: 3px solid #f1f1f1;
+}
+
+.window-content::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* Taskbar styling */
+.taskbar {
+  background: linear-gradient(to right, #0a0a0a, #1f1f1f, #0a0a0a);
+  border-top: 1px solid #333;
+  height: 48px;
+  backdrop-filter: blur(10px);
+}
+
+.start-button {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.start-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.start-button:active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.taskbar-item {
+  height: 40px;
+  margin: 0 2px;
+  padding: 0 8px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease;
+  border-bottom: 3px solid transparent;
+}
+
+.taskbar-item.active {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-bottom: 3px solid #0078d7;
+}
+
+.taskbar-item:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.taskbar-item-icon {
+  font-size: 1.2rem;
+  margin-right: 8px;
+}
+
+.taskbar-right {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  color: white;
+  font-size: 0.8rem;
+}
+
+.taskbar-right .time {
+  font-size: 12px;
+  text-align: center;
+}
+
+/* Start menu styling */
+.start-menu {
+  position: absolute;
+  bottom: 48px;
+  left: 0;
+  width: 350px;
+  background-color: rgba(25, 25, 25, 0.95);
+  backdrop-filter: blur(10px);
+  color: white;
+  border-radius: 0 8px 0 0;
+  box-shadow: 5px -5px 20px rgba(0, 0, 0, 0.3);
+  animation: startMenuOpen 0.2s ease-out;
+  overflow: hidden;
+  z-index: 100;
+}
+
+@keyframes startMenuOpen {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.start-menu-header {
+  padding: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.start-menu-header-title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.start-menu-header-subtitle {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.start-menu-items {
+  max-height: 450px;
+  overflow-y: auto;
+}
+
+.start-menu-item {
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  transition: all 0.1s ease;
+  cursor: pointer;
+}
+
+.start-menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.start-menu-item-icon {
+  font-size: 20px;
+  margin-right: 12px;
+  width: 24px;
+  text-align: center;
+}
+
+.start-menu-item-text {
+  font-size: 14px;
+}
+
+.start-menu-footer {
+  padding: 12px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Specific window content styling */
+.about-content, .projects-content, .skills-content, .contact-content, .resume-content {
+  padding: 20px;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #0078d7;
+}
+
+.section-subtitle {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.text-content {
+  margin-bottom: 12px;
+  line-height: 1.5;
+  color: #444;
+}
+
+/* Project cards */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.project-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  transition: all 0.2s ease;
+}
+
+.project-card:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.project-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.project-description {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.project-link {
+  color: #0078d7;
+  text-decoration: none;
+  font-size: 14px;
+  display: inline-block;
+}
+
+.project-link:hover {
+  text-decoration: underline;
+}
+
+/* Form styling */
+.contact-form {
+  display: grid;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #333;
+}
+
+.form-input, .form-textarea {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.form-input:focus, .form-textarea:focus {
+  border-color: #0078d7;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 120, 215, 0.2);
+}
+
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.submit-button {
+  background-color: #0078d7;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.submit-button:hover {
+  background-color: #0069bd;
+}
+
+.submit-button:active {
+  background-color: #005ba1;
+}
+
+.contact-info {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.contact-method {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.contact-icon {
+  margin-right: 8px;
+  color: #0078d7;
+}
+
+/* Skills section */
+.skills-category {
+  margin-bottom: 20px;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-tag {
+  background-color: #f0f5ff;
+  color: #0078d7;
+  padding: 6px 12px;
+  border-radius: 16px;
+  font-size: 13px;
+}
+.icons-space {
+    padding-top: 60px;
+}
+
+/* Desktop Icon Container */
+.desktop-icon {
+  width: 90px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Icon Image */
+.desktop-icon-image {
+  font-size: 40px; /* Adjust emoji/icon size */
+  margin-bottom: 5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Icon Text */
+.desktop-icon-text {
+  font-size: 14px;
+  color: white;
+  padding: 3px 6px;
+  border-radius: 3px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Hover Effect */
+.desktop-icon:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+/* Click Effect */
+.desktop-icon:active {
+  transform: scale(0.95);
+  background: rgba(255, 255, 255, 0.3);
+}
+/* Resume styling */
+.timeline-item {
+  margin-bottom: 16px;
+  position: relative;
+  padding-left: 24px;
+}
+
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 18px;
+  bottom: -10px;
+  width: 2px;
+  background-color: #e0e0e0;
+}
+
+.timeline-item:last-child::after {
+  display: none;
+}
+
+.timeline-title {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.timeline-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.timeline-date {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 8px;
+}
+
+.timeline-list {
+  padding-left: 18px;
+  margin-bottom: 8px;
+}
+
+.timeline-list li {
+  margin-bottom: 4px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Notification popup */
+.notification {
+  position: absolute;
+  bottom: 70px;
+  right: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  overflow: hidden;
+  animation: notificationSlide 0.3s ease-out;
+  z-index: 1000;
+}
+
+@keyframes notificationSlide {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.notification-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.notification-title {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.notification-close {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #555;
+}
+
+.notification-body {
+  padding: 16px;
+}
+
+.notification-message {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.notification-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.notification-btn {
+  background-color: #0078d7;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.notification-btn.secondary {
+  background-color: transparent;
+  color: #0078d7;
+}
+
+/* Modal popup */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal {
+  background-color: white;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  animation: modalPop 0.3s ease-out;
+}
+
+@keyframes modalPop {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal-header {
+  padding: 16px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #555;
+}
+
+.modal-body {
+  padding: 20px 16px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.modal-footer {
+  padding: 12px 16px;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modal-btn {
+  background-color: #0078d7;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.modal-btn.secondary {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.modal-btn:hover {
+  opacity: 0.9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .window {
+    width: 90% !important;
+    height: 80% !important;
+    left: 5% !important;
+    top: 5% !important;
+  }
+  
+  .start-menu {
+    width: 280px;
+  }
+  
+  .taskbar-item-text {
+    display: none;
+  }
+  
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.task-flex {
+    display: flex;
+}
+
+.window-controls {
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+/* Dark mode overrides (optional) */
+@media (prefers-color-scheme: dark) {
+  .window-title-bar {
+    background: linear-gradient(to right, #303030, #252525);
+    border-bottom: 1px solid #1a1a1a;
+  }
+  
+  .window-title {
+    color: #e0e0e0;
+  }
+  
+  .window-content {
+    background-color: #202020;
+    color: #e0e0e0;
+  }
+  
+  .section-title {
+    color: #4ca0e0;
+  }
+  
+  .section-subtitle {
+    color: #d0d0d0;
+  }
+  
+  .text-content {
+    color: #b0b0b0;
+  }
+  
+  .project-card {
+    border: 1px solid #303030;
+    background-color: #252525;
+  }
+  
+  .project-description {
+    color: #a0a0a0;
+  }
+  
+  .form-input, .form-textarea {
+    background-color: #303030;
+    border: 1px solid #404040;
+    color: #e0e0e0;
+  }
+  
+  .timeline-title {
+    color: #d0d0d0;
+  }
+  
+  .timeline-subtitle {
+    color: #b0b0b0;
+  }
+}
+
+
+
+
+ .resume-container {
+            max-width: 800px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            margin: auto;
+        }
+
+        /* Header Section */
+        .resume-header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #0073e6;
+        }
+
+        .resume-header h2 {
+            font-size: 28px;
+            color: #0073e6;
+            margin: 0;
+        }
+
+        .resume-header p {
+            font-size: 16px;
+            color: #555;
+            margin: 5px 0;
+        }
+
+        /* Section Titles */
+        .resume-section {
+            margin: 30px 0;
+        }
+
+        .resume-section h3 {
+            font-size: 22px;
+            color: #0073e6;
+            border-left: 5px solid #0073e6;
+            padding-left: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* Personal Info */
+        .personal-info p {
+            font-size: 16px;
+            color: #333;
+            margin: 5px 0;
+        }
+
+        .personal-info a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+
+        /* Timeline Items */
+        .timeline-item {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 5px solid #0073e6;
+        }
+
+        .timeline-item p {
+            margin: 5px 0;
+            color: #333;
+        }
+
+        .timeline-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #222;
+        }
+
+        .timeline-date {
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* Skills */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-item {
+            background: #0073e6;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Download Button */
+        .download-button {
+            display: block;
+            text-align: center;
+            background: #0073e6;
+            color: #fff;
+            padding: 12px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: 0.3s ease;
+        }
+
+        .download-button:hover {
+            background: #005bb5;
+        }
