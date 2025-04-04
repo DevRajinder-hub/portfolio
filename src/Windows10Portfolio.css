@@ -27,7 +27,7 @@ body {
 }
 
 .start-button img {
-    max-width: 30px;
+    max-width: 25px;
 }
 
 .start-recent {
@@ -224,7 +224,7 @@ body {
 /* Start menu styling */
 .start-menu {
   position: absolute;
-  bottom: 48px;
+  bottom: 45px;
   left: 0;
   width: 350px;
   background-color: rgba(25, 25, 25, 0.95);

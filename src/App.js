@@ -537,7 +537,7 @@ const App = () => {
         <div className="start-menu absolute bottom-12 left-0 w-64 bg-gray-800 text-white shadow-lg z-40">
           <div className="start-menu-header p-4 border-b border-gray-700">
             <div className="start-menu-header-title">Rajinder Kumar</div>
-            <div className="start-menu-header-subtitle text-sm">Web Developer</div>
+            <div className="start-menu-header-subtitle text-sm">Full Stack Developer</div>
           </div>
           
           <div className="start-menu-items p-2">
